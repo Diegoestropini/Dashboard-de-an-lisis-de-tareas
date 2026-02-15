@@ -1,0 +1,40 @@
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: $font-main;
+  color: $color-text;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(33, 87, 50, 0.1), transparent 38%),
+    radial-gradient(circle at 95% 10%, rgba(178, 114, 18, 0.15), transparent 30%),
+    $color-bg;
+}
+
+.dashboard-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-6 $space-4;
+}
+
+.panel-card {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-soft;
+  padding: $space-5;
+}
+
+.eyebrow {
+  color: $color-brand;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}

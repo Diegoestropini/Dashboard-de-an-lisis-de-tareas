@@ -1,0 +1,14 @@
+{
+  "name": "taskflow-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dashboard de análisis de tareas con HTML, SASS, Bootstrap y ES6.",
+  "scripts": {
+    "sass:build": "sass assets/scss/main.scss assets/css/main.css --style=compressed",
+    "sass:watch": "sass --watch assets/scss/main.scss:assets/css/main.css"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.37.3",
+    "sass": "^1.90.0"
+  }
+}

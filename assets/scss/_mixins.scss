@@ -1,0 +1,10 @@
+@mixin focus-ring {
+  outline: 3px solid rgba(33, 87, 50, 0.25);
+  outline-offset: 1px;
+}
+
+@mixin media-down($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

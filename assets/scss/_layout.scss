@@ -1,0 +1,43 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-bottom: $space-5;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: $space-4;
+  align-items: start;
+}
+
+.dashboard-sidebar,
+.dashboard-content {
+  min-width: 0;
+}
+
+@include media-down($bp-md) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@include media-down($bp-sm) {
+  .dashboard-shell {
+    padding: $space-4 $space-3;
+  }
+
+  .dashboard-sidebar {
+    min-width: 0;
+  }
+}

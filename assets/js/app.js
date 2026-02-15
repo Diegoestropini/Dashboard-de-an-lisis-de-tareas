@@ -27,7 +27,9 @@ const state = {
   filter: "all",
 };
 
-let nextTaskId = Math.max(...initialTasks.map((task) => task.id)) + 1;
+let nextTaskId = initialTasks.length
+  ? Math.max(...initialTasks.map((task) => task.id)) + 1
+  : 1;
 
 const dom = {
   taskList: document.querySelector("#taskList"),
@@ -142,6 +144,7 @@ function setFilter(filter) {
   state.filter = filter;
   Object.entries(dom.filterButtons).forEach(([key, button]) => {
     button.classList.toggle("is-active", key === filter);
+    button.setAttribute("aria-pressed", String(key === filter));
   });
   renderTasks();
 }
@@ -173,7 +176,7 @@ function deleteTask(id) {
 }
 
 function validateForm() {
-  const title = dom.taskTitle.value.trim();
+  const title = dom.taskTitle.value.trim().replace(/\s+/g, " ");
   const priority = dom.taskPriority.value;
   let isValid = true;
 
@@ -214,8 +217,12 @@ function bindEvents() {
     }
 
     addTask({ title, priority });
-    const modalInstance = bootstrap.Modal.getOrCreateInstance(dom.addTaskModal);
-    modalInstance.hide();
+
+    if (window.bootstrap?.Modal) {
+      const modalInstance = bootstrap.Modal.getOrCreateInstance(dom.addTaskModal);
+      modalInstance.hide();
+    }
+
     resetForm();
   });
 
